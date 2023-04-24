@@ -4,7 +4,7 @@ from pygame import mixer
 
 from MenuScreens import OptionsFile
 from Helpers.button import Button
-from MenuScreens.AlgorithmsFile import ChooseYourAlgo
+from MenuScreens.StartGame import ChooseYourAlgo
 
 pygame.init()
 
