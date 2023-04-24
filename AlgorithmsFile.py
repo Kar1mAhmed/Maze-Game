@@ -16,16 +16,16 @@ class Algorithm(object):
             PLAY_MOUSE_POS = pygame.mouse.get_pos()
 
             BFS = Button(image=None, pos=(buttons_posX, buttons_posY[0]),
-                         text_input="BFS", font=main.get_font(40), base_color="White", hovering_color="Green")
+                         text_input="BFS", font=main.get_font(40), base_color="White", hovering_color="#06d6a0")
             DFS = Button(image=None, pos=(buttons_posX, buttons_posY[1]),
-                         text_input="DFS", font=main.get_font(40), base_color="White", hovering_color="Green")
+                         text_input="DFS", font=main.get_font(40), base_color="White", hovering_color="#06d6a0")
             Aastrec = Button(image=None, pos=(buttons_posX, buttons_posY[2]),
-                             text_input="A*", font=main.get_font(40), base_color="White", hovering_color="Green")
+                             text_input="A*", font=main.get_font(40), base_color="White", hovering_color="#06d6a0")
             START_NEW_GAME = Button(image=None, pos=(buttons_posX, buttons_posY[3]),
                                     text_input="start new game", font=main.get_font(40), base_color="White",
                                     hovering_color="Green")
             Menu_BACK = Button(image=None, pos=(buttons_posX, buttons_posY[4]),
-                               text_input="BACK", font=main.get_font(50), base_color="White", hovering_color="#E90064")
+                               text_input="BACK", font=main.get_font(50), base_color="White", hovering_color="#ff006e")
 
             for button in [BFS, DFS, Aastrec, START_NEW_GAME, Menu_BACK]:
                 button.changeColor(PLAY_MOUSE_POS)

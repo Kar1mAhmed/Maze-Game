@@ -25,15 +25,15 @@ class OptionsClass:
 
             SOUND_BUTTON_MUTE = Button(image=None, pos=(buttons_posX, buttons_posY[0]),
                                        text_input="Mute music", font=main.get_font(60), base_color="White",
-                                       hovering_color="#A084DC")
+                                       hovering_color="#4cc9f0")
 
             SOUND_BUTTON_UnMUTE = Button(image=None, pos=(buttons_posX, buttons_posY[1]),
                                          text_input="Unmute music", font=main.get_font(60), base_color="White",
-                                         hovering_color="#A084DC")
+                                         hovering_color="#4361ee")
 
             OPTIONS_BACK = Button(image=None, pos=(buttons_posX, buttons_posY[2]),
                                   text_input="BACK", font=main.get_font(75), base_color="White",
-                                  hovering_color="#E90064")
+                                  hovering_color="#ff006e")
 
             for button in [OPTIONS_BACK, SOUND_BUTTON_MUTE, SOUND_BUTTON_UnMUTE]:
                 button.changeColor(OPTIONS_MOUSE_POS)
