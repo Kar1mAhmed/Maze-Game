@@ -1,6 +1,6 @@
 import Main
 import pygame
-from Helpers.button import Button
+from Helpers.Button import Button
 import sys
 from MenuScreens import Play
 

@@ -1,7 +1,7 @@
 import pygame
 import Main
 import sys
-from Helpers.button import Button
+from Helpers.Button import Button
 
 
 def options(screen_width, screen_height):
