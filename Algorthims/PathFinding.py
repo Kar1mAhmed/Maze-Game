@@ -12,7 +12,7 @@ grid = Grid(matrix=matrix)
 
 start = grid.node(0, 0)
 end = grid.node(6, 3)
- 
+
 finder = AStarFinder(diagonal_movement=DiagonalMovement.always)
 
 path, run = finder.find_path(start, end, grid)

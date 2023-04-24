@@ -3,12 +3,14 @@ import sys
 from pygame import mixer
 
 from MenuScreens import OptionsFile
-from Helpers.Button import Button
 from MenuScreens.StartGame import ChooseYourAlgo
+
+from Helpers.Button import Button
+from Helpers.Debug import debug
 
 pygame.init()
 
-##### Global Variables #####    
+##### Global Variables #####
 info = pygame.display.Info()
 screenXsize = 1920
 screenYsize = 1080
@@ -70,7 +72,7 @@ def main_menu():
                 if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                     pygame.quit()
                     sys.exit()
-
+        debug("Debugging")
         pygame.display.update()
 
 
