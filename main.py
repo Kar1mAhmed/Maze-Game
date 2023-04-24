@@ -8,7 +8,7 @@ from MenuScreens.StartGame import ChooseYourAlgo
 
 pygame.init()
 
-##### Global Variables #####
+##### Global Variables #####    
 info = pygame.display.Info()
 screenXsize = 1920
 screenYsize = 1080
