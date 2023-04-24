@@ -2,9 +2,9 @@ import pygame
 import sys
 from pygame import mixer
 
-import optionsFile
-from AlgorithmsFile import Algorithm
+from MenuScreens import OptionsFile
 from Helpers.button import Button
+from MenuScreens.AlgorithmsFile import ChooseYourAlgo
 
 pygame.init()
 
@@ -64,9 +64,9 @@ def main_menu():
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if PLAY_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    Algorithm.ChooseYourAlgo(screenXsize, screenYsize)
+                    ChooseYourAlgo(screenXsize, screenYsize)
                 if OPTIONS_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    optionsFile.OptionsClass.options(screenXsize, screenYsize)
+                    OptionsFile.options(screenXsize, screenYsize)
                 if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                     pygame.quit()
                     sys.exit()
