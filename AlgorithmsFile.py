@@ -2,7 +2,7 @@ import main
 import pygame
 from Helpers.button import Button
 import sys
-import Go
+import Play
 
 
 class Algorithm(object):
@@ -37,7 +37,8 @@ class Algorithm(object):
                     sys.exit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if START_NEW_GAME.checkForInput(PLAY_MOUSE_POS):
-                        Go.gameLoop()
+                        main.mixer.music.pause()
+                        Play.gameLoop()
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if Menu_BACK.checkForInput(PLAY_MOUSE_POS):
                         main.main_menu()

@@ -47,9 +47,9 @@ class OptionsClass:
                     if OPTIONS_BACK.checkForInput(OPTIONS_MOUSE_POS):
                         main.main_menu()
                     if SOUND_BUTTON_MUTE.checkForInput(OPTIONS_MOUSE_POS):
-                        main.mixer.music.pause()
+                        main.mixer.music.set_volume(0)
                     if SOUND_BUTTON_UnMUTE.checkForInput(OPTIONS_MOUSE_POS):
-                        main.mixer.music.unpause()
+                        main.mixer.music.set_volume(0.5)
 
 
             pygame.display.update()
