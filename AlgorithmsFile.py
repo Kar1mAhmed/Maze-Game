@@ -37,7 +37,7 @@ class Algorithm(object):
                     sys.exit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if START_NEW_GAME.checkForInput(PLAY_MOUSE_POS):
-                        main.mixer.music.pause()
+                        main.mixer.music.set_volume(0.15)
                         Play.gameLoop()
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if Menu_BACK.checkForInput(PLAY_MOUSE_POS):

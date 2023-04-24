@@ -24,11 +24,11 @@ class OptionsClass:
             main.SCREEN.blit(main.BG, (0, 0))
 
             SOUND_BUTTON_MUTE = Button(image=None, pos=(buttons_posX, buttons_posY[0]),
-                                       text_input="Mute music", font=main.get_font(50), base_color="White",
+                                       text_input="Mute music", font=main.get_font(60), base_color="White",
                                        hovering_color="#A084DC")
 
             SOUND_BUTTON_UnMUTE = Button(image=None, pos=(buttons_posX, buttons_posY[1]),
-                                         text_input="Unmute music", font=main.get_font(50), base_color="White",
+                                         text_input="Unmute music", font=main.get_font(60), base_color="White",
                                          hovering_color="#A084DC")
 
             OPTIONS_BACK = Button(image=None, pos=(buttons_posX, buttons_posY[2]),

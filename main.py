@@ -38,7 +38,7 @@ def main_menu():
 
         MENU_MOUSE_POS = pygame.mouse.get_pos()
 
-        MENU_TEXT = get_font(70).render("Fire Fighter", True, "White")
+        MENU_TEXT = get_font(110).render("Fire Fighter", True, "White")
 
         MENU_RECT = MENU_TEXT.get_rect(center=(buttons_posX, 80))
 

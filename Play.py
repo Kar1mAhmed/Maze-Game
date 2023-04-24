@@ -40,7 +40,7 @@ def gameLoop():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     run = False
-                    main.mixer.music.unpause()
+                    main.mixer.music.set_volume(0.5)
                     main.main_menu()
         shape = Agent.move(shape)
         render(Agent, shape)
