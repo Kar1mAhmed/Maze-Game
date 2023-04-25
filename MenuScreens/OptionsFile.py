@@ -1,7 +1,7 @@
 import pygame
-import Main
+import main
 import sys
-from Helpers.Button import Button
+from Helpers.button import Button
 
 
 def options(screen_width, screen_height):
@@ -11,25 +11,25 @@ def options(screen_width, screen_height):
     while True:
         OPTIONS_MOUSE_POS = pygame.mouse.get_pos()
 
-        Main.SCREEN.fill("white")
+        main.SCREEN.fill("white")
 
-        Main.SCREEN.blit(Main.BG, (0, 0))
+        main.SCREEN.blit(main.BG, (0, 0))
 
         SOUND_BUTTON_MUTE = Button(image=None, pos=(buttons_posX, buttons_posY[0]),
-                                   text_input="Mute music", font=Main.get_font(60), base_color="White",
+                                   text_input="Mute music", font=main.get_font(60), base_color="White",
                                    hovering_color="#4cc9f0")
 
         SOUND_BUTTON_UnMUTE = Button(image=None, pos=(buttons_posX, buttons_posY[1]),
-                                     text_input="Unmute music", font=Main.get_font(60), base_color="White",
+                                     text_input="Unmute music", font=main.get_font(60), base_color="White",
                                      hovering_color="#4361ee")
 
         OPTIONS_BACK = Button(image=None, pos=(buttons_posX, buttons_posY[2]),
-                              text_input="BACK", font=Main.get_font(75), base_color="White",
+                              text_input="BACK", font=main.get_font(75), base_color="White",
                               hovering_color="#ff006e")
 
         for button in [OPTIONS_BACK, SOUND_BUTTON_MUTE, SOUND_BUTTON_UnMUTE]:
             button.changeColor(OPTIONS_MOUSE_POS)
-            button.update(Main.SCREEN)
+            button.update(main.SCREEN)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -37,10 +37,10 @@ def options(screen_width, screen_height):
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if OPTIONS_BACK.checkForInput(OPTIONS_MOUSE_POS):
-                    Main.main_menu()
+                    main.main_menu()
                 if SOUND_BUTTON_MUTE.checkForInput(OPTIONS_MOUSE_POS):
-                    Main.mixer.music.pause()
+                    main.mixer.music.pause()
                 if SOUND_BUTTON_UnMUTE.checkForInput(OPTIONS_MOUSE_POS):
-                    Main.mixer.music.unpause()
+                    main.mixer.music.unpause()
 
         pygame.display.update()

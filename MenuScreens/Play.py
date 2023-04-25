@@ -2,7 +2,7 @@ import pygame
 from GameObjects.Agent import Agent
 from GameObjects.BlockControl import BlocksControl
 
-import Main
+import main
 
 FPS = 120
 
@@ -40,8 +40,8 @@ def gameLoop():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     run = False
-                    Main.mixer.music.set_volume(0.5)
-                    Main.main_menu()
+                    main.mixer.music.set_volume(0.5)
+                    main.main_menu()
         shape = Agent.move(shape)
         render(Agent, shape)
 
