@@ -2,7 +2,7 @@ import pygame
 import sys
 from pygame import mixer
 
-from MenuScreens import OptionsFile
+from MenuScreens import OptionsFiles
 from MenuScreens.StartGame import ChooseYourAlgo
 
 from Helpers.button import Button
