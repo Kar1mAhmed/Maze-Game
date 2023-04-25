@@ -25,10 +25,9 @@ class Level:
                 if col == 'W':
                     Tile((x,y), [self.visible_sprites, self.obstacles_sprites])
                 if col == 'P':
-                    self.player = Player((x,y), [self.visible_sprites])
+                    self.player = Player((x,y), [self.visible_sprites], self.obstacles_sprites)
 
             
     def run(self):
         self.visible_sprites.draw(self.display)
         self.visible_sprites.update()
-        debug(self.player.direction)
