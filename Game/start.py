@@ -3,6 +3,7 @@ from Game.level import Level
 import Game.maze_creator
 import main
 
+from Helpers.Debug import debug
 
 class Game:
     def __init__(self, WIDTH=1920, HEIGHT=1080):
@@ -27,6 +28,7 @@ class Game:
                         break
             self.screen.fill('#e5e5e5')
             self.level.run()
+            debug(f"Collected {self.level.player.collected_kids} of {self.level.num_of_kids}")
             pygame.display.update()
             self.clock.tick(60)
 

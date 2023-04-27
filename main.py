@@ -30,7 +30,7 @@ mixer.music.load('assets/Sounds/StrangerThings.wav')
 mixer.music.play(-1)
 
 
-def get_font(size):  # Returns font size
+def get_font(size):  # Returns font sized
     return pygame.font.Font("assets/Font/Righteous-Regular.ttf", size)
 
 

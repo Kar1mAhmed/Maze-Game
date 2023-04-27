@@ -1,16 +1,20 @@
 import pygame
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self,pos, groups, obstacle_sprites) -> None:
+    def __init__(self,pos, groups, obstacle_sprites, kids, visible_sprites) -> None:
         super().__init__(groups)        
         self.image = pygame.image.load('assets/Images/hero.png').convert_alpha()
         self.rect = self.image.get_rect(topleft = pos)
         self.hit_box = self.rect.inflate(0, 0)
         
         self.obstacle_sprites = obstacle_sprites
+        self.visible_sprites = visible_sprites
+        self.kids = kids
+        
+        self.collected_kids = 0
         
         self.direction = pygame.math.Vector2()
-        self.speed = 10
+        self.speed = 5
 
     
     def input(self):
@@ -31,6 +35,8 @@ class Player(pygame.sprite.Sprite):
             self.direction.x = 0
     
     def move(self, speed):
+        
+        self.collision_with_kid()
         
         
         if self.direction.magnitude() != 0  : # to avoid division by zero
@@ -68,6 +74,14 @@ class Player(pygame.sprite.Sprite):
                         self.hit_box.bottom = sprite.hit_box.top
                     if self.direction.y < 0: # moving up
                         self.hit_box.top = sprite.hit_box.bottom
+    
+    def collision_with_kid(self):
+        
+        for kid in self.kids:
+            if kid.hit_box.colliderect(self.hit_box):
+                self.kids.remove(kid)
+                self.visible_sprites.remove(kid)
+                self.collected_kids+=1
                     
     def update(self):
         self.input()
