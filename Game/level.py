@@ -7,7 +7,7 @@ from Game.kid import Kid
 from Helpers.Debug import debug
 
 class Level:
-    def __init__(self, rows=20, cols=20, num_of_kids=3):
+    def __init__(self, rows=40, cols=40, num_of_kids=10):
         
         # get the display surface
         self.display = pygame.display.get_surface()
@@ -46,11 +46,13 @@ class Level:
             
             
         for _ in range(self.num_of_kids):   
+            SPAWN_START = 2
+            BLOCK_SPAWN_POSITION = 10
             
-            kid_x = random.randint(self.cols / 4, self.cols - 1) * self.block_size + 10
-            kid_y = random.randint(self.rows / 4, self.rows - 1)* self.block_size + 10
+            kid_x = random.randint(SPAWN_START, self.cols - 1) * self.block_size + BLOCK_SPAWN_POSITION
+            kid_y = random.randint(SPAWN_START, self.rows - 1)* self.block_size + BLOCK_SPAWN_POSITION
 
-            self.kid = Kid((kid_x , kid_y ), [self.visible_sprites, self.kids])
+            Kid((kid_x , kid_y ), [self.visible_sprites, self.kids])
             
         self.player = Player((self.block_size / 3, self.block_size / 3), [self.visible_sprites], self.obstacles_sprites, self.kids, self.visible_sprites)
 

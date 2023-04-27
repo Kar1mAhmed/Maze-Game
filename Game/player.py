@@ -14,7 +14,7 @@ class Player(pygame.sprite.Sprite):
         self.collected_kids = 0
         
         self.direction = pygame.math.Vector2()
-        self.speed = 5
+        self.speed = 8
 
     
     def input(self):
