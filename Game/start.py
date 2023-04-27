@@ -1,13 +1,13 @@
 import pygame, sys
-from Setting import *
-from level import Level
+from Game.level import Level
+import Game.maze_creator
 
 
 class Game:
-    def __init__(self):
-        
-        pygame.init()
+    def __init__(self, WIDTH=1920, HEIGHT=1080):
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
+        self.display = pygame.display.get_surface()
+
         pygame.display.set_caption("Fire Fighter")
         self.clock = pygame.time.Clock()
         
@@ -23,7 +23,7 @@ class Game:
             self.screen.fill('white')
             self.level.run()
             pygame.display.update()
-            self.clock.tick(FPS)
+            self.clock.tick(120)
 
 if __name__ == "__main__":
     game = Game()

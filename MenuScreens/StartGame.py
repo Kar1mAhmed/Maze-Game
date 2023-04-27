@@ -2,8 +2,9 @@ import main
 import pygame
 from Helpers.button import Button
 import sys
-from MenuScreens import Play
+from Game.start import Game
 
+game = Game()
 
 def ChooseYourAlgo(screen_width, screen_height):
     buttons_posX = screen_width / 2
@@ -37,7 +38,7 @@ def ChooseYourAlgo(screen_width, screen_height):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if START_NEW_GAME.checkForInput(PLAY_MOUSE_POS):
                     main.mixer.music.set_volume(0.15)
-                    Play.gameLoop()
+                    game.run()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if Menu_BACK.checkForInput(PLAY_MOUSE_POS):
                     main.main_menu()

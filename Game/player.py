@@ -1,5 +1,4 @@
 import pygame
-from Setting import *
 
 
 class Player(pygame.sprite.Sprite):
@@ -8,12 +7,12 @@ class Player(pygame.sprite.Sprite):
         
         self.image = pygame.image.load('Game/imgs/hero.png').convert_alpha()
         self.rect = self.image.get_rect(topleft = pos)
-        self.hit_box = self.rect.inflate(0, -5)
+        self.hit_box = self.rect.inflate(0, 0)
         
         self.obstacle_sprites = obstacle_sprites
         
         self.direction = pygame.math.Vector2()
-        self.speed = 2
+        self.speed = 15
     
     
     def input(self):

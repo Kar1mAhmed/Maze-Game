@@ -1,14 +1,17 @@
 import pygame
-from Setting import *
-from tile import Tile
-from player import Player
-from Debug import debug
+from Game.tile import Tile
+from Game.player import Player
+from Game.maze_creator import maze
 
 class Level:
-    def __init__(self):
+    def __init__(self, rows=30, cols=30):
         
         # get the display surface
         self.display = pygame.display.get_surface()
+        
+        my_maze = maze(rows=rows, cols=cols)
+        my_maze.CreateMaze()
+        self.Map = my_maze.maze_map
         
         # Sprit Group setup
         self.visible_sprites = YSortCameraGroup()
@@ -18,14 +21,17 @@ class Level:
         self.create_map()
         
     def create_map(self):
-        for row_index, row in enumerate(MAP):
-            for col_index, col in enumerate(row):
-                x = col_index * TILESIZE
-                y = row_index * TILESIZE
-                if col == 'W':
-                    Tile((x,y), [self.visible_sprites, self.obstacles_sprites])
-                if col == 'P':
-                    self.player = Player((x,y), [self.visible_sprites], self.obstacles_sprites)
+        for key, values in self.Map.items():
+            col_index, row_index = key
+            if values['N'] == 0:
+                Tile((row_index * 128, col_index * 128), [self.visible_sprites, self.obstacles_sprites], 'vert.png')
+            if values['S'] == 0:
+                 Tile((row_index * 128, (col_index + 1) * 128), [self.visible_sprites, self.obstacles_sprites], 'vert.png')
+            if values['W'] == 0:
+                Tile((row_index * 128, col_index * 128), [self.visible_sprites, self.obstacles_sprites], 'horz.png')
+            if values['E'] == 0:
+                Tile(((row_index + 1) * 128, col_index * 128), [self.visible_sprites, self.obstacles_sprites], 'horz.png')
+            self.player = Player((140, 140), [self.visible_sprites], self.obstacles_sprites)
 
             
     def run(self):

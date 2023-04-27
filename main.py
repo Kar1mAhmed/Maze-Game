@@ -23,7 +23,7 @@ start_menu_buttons_posY = [y_start, y_start + 150, y_start + 300]
 
 SCREEN = pygame.display.set_mode((screenXsize, screenYsize))
 BG = pygame.image.load("assets/Images/Background3.png")
-pygame.display.set_caption("Menu")
+pygame.display.set_caption("Fire Fighter")
 
 
 mixer.music.load('assets/Sounds/StrangerThings.wav')
