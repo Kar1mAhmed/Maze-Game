@@ -1,6 +1,7 @@
 import pygame, sys
 from Game.level import Level
 import Game.maze_creator
+import main
 
 
 class Game:
@@ -19,7 +20,11 @@ class Game:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-            
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        main.mixer.music.set_volume(0.5)
+                        main.main_menu()
+                        break
             self.screen.fill('white')
             self.level.run()
             pygame.display.update()

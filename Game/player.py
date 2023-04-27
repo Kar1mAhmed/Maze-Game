@@ -1,5 +1,5 @@
 import pygame
-
+from Helpers.Debug import debug
 
 class Player(pygame.sprite.Sprite):
     def __init__(self,pos, groups, obstacle_sprites) -> None:
@@ -13,7 +13,7 @@ class Player(pygame.sprite.Sprite):
         
         self.direction = pygame.math.Vector2()
         self.speed = 15
-    
+
     
     def input(self):
         keys = pygame.key.get_pressed()
@@ -38,10 +38,13 @@ class Player(pygame.sprite.Sprite):
             self.direction = self.direction.normalize()
         
         self.hit_box.x += self.direction.x * speed
-        self.collision('horizontal')
+        if self.direction.x != 0:
+            self.collision('horizontal')
         
         self.hit_box.y += self.direction.y * speed
-        self.collision('vertical')
+        if self.direction.y !=0:
+            
+            self.collision('vertical')
         
         self.rect.center = self.hit_box.center
 
