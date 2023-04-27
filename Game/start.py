@@ -25,7 +25,7 @@ class Game:
                         main.mixer.music.set_volume(0.5)
                         main.main_menu()
                         break
-            self.screen.fill('white')
+            self.screen.fill('#e5e5e5')
             self.level.run()
             pygame.display.update()
             self.clock.tick(60)
