@@ -4,7 +4,7 @@ from Game.player import Player
 from Game.maze_creator import maze
 
 class Level:
-    def __init__(self, rows=13, cols=13):
+    def __init__(self, rows=20, cols=20):
         
         # get the display surface
         self.display = pygame.display.get_surface()
