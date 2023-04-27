@@ -1,13 +1,18 @@
 import pygame
+import random
 from Game.tile import Tile
 from Game.player import Player
 from Game.maze_creator import maze
+from Game.kid import Kid
+from Helpers.Debug import debug
 
 class Level:
-    def __init__(self, rows=20, cols=20):
+    def __init__(self, rows=100, cols=100):
         
         # get the display surface
         self.display = pygame.display.get_surface()
+        self.rows = rows
+        self.cols = cols
         
         my_maze = maze(rows=rows, cols=cols)
         my_maze.CreateMaze()
@@ -36,7 +41,12 @@ class Level:
             if values['E'] == 0:
                 Tile(((row_index + 1) * self.block_size, col_index * self.block_size), [self.visible_sprites, self.obstacles_sprites], 'vert.png')
                 
-            self.player = Player((self.block_size / 3, self.block_size / 3), [self.visible_sprites], self.obstacles_sprites)
+            kid_x = random.randint(self.cols / 2, self.cols - 1)
+            kid_y = random.randint(self.rows / 2, self.rows - 1)
+            
+                
+        self.player = Player((self.block_size / 3, self.block_size / 3), [self.visible_sprites], self.obstacles_sprites)
+        self.kid = Kid((kid_x * self.block_size, kid_y * self.block_size), [self.visible_sprites])
 
             
     def run(self):
