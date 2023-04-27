@@ -46,9 +46,11 @@ class Level:
             
             
         for _ in range(self.num_of_kids):   
-            kid_x = random.randint(self.cols / 2, self.cols - 1)
-            kid_y = random.randint(self.rows / 2, self.rows - 1)
-            self.kid = Kid((kid_x * self.block_size, kid_y * self.block_size), [self.visible_sprites, self.kids])
+            
+            kid_x = random.randint(self.cols / 4, self.cols - 1) * self.block_size + 10
+            kid_y = random.randint(self.rows / 4, self.rows - 1)* self.block_size + 10
+
+            self.kid = Kid((kid_x , kid_y ), [self.visible_sprites, self.kids])
             
         self.player = Player((self.block_size / 3, self.block_size / 3), [self.visible_sprites], self.obstacles_sprites, self.kids, self.visible_sprites)
 
