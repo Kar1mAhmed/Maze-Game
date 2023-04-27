@@ -28,7 +28,7 @@ class Game:
             self.screen.fill('white')
             self.level.run()
             pygame.display.update()
-            self.clock.tick(120)
+            self.clock.tick(60)
 
 if __name__ == "__main__":
     game = Game()

@@ -4,7 +4,7 @@ from Game.player import Player
 from Game.maze_creator import maze
 
 class Level:
-    def __init__(self, rows=30, cols=30):
+    def __init__(self, rows=20, cols=20):
         
         # get the display surface
         self.display = pygame.display.get_surface()
@@ -17,21 +17,26 @@ class Level:
         self.visible_sprites = YSortCameraGroup()
         self.obstacles_sprites = pygame.sprite.Group()
         
+        self.block_size = 64
+
         #sprite setup   
         self.create_map()
         
     def create_map(self):
         for key, values in self.Map.items():
             col_index, row_index = key
+            col_index-=1
+            row_index-=1
             if values['N'] == 0:
-                Tile((row_index * 128, col_index * 128), [self.visible_sprites, self.obstacles_sprites], 'vert.png')
+                Tile((row_index * self.block_size, col_index * self.block_size), [self.visible_sprites, self.obstacles_sprites], 'horz.png')
             if values['S'] == 0:
-                 Tile((row_index * 128, (col_index + 1) * 128), [self.visible_sprites, self.obstacles_sprites], 'vert.png')
+                 Tile((row_index * self.block_size, (col_index + 1) * self.block_size), [self.visible_sprites, self.obstacles_sprites], 'horz.png')
             if values['W'] == 0:
-                Tile((row_index * 128, col_index * 128), [self.visible_sprites, self.obstacles_sprites], 'horz.png')
+                Tile((row_index * self.block_size, col_index * self.block_size), [self.visible_sprites, self.obstacles_sprites], 'vert.png')
             if values['E'] == 0:
-                Tile(((row_index + 1) * 128, col_index * 128), [self.visible_sprites, self.obstacles_sprites], 'horz.png')
-            self.player = Player((140, 140), [self.visible_sprites], self.obstacles_sprites)
+                Tile(((row_index + 1) * self.block_size, col_index * self.block_size), [self.visible_sprites, self.obstacles_sprites], 'vert.png')
+                
+            self.player = Player((self.block_size / 3, self.block_size / 3), [self.visible_sprites], self.obstacles_sprites)
 
             
     def run(self):
