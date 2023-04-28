@@ -22,7 +22,7 @@ def ChooseYourAlgo(screen_width, screen_height):
         Aastrec = Button(image=None, pos=(buttons_posX, buttons_posY[2]),
                          text_input="A*", font=main.get_font(40), base_color="White", hovering_color="#06d6a0")
         START_NEW_GAME = Button(image=None, pos=(buttons_posX, buttons_posY[3]),
-                                text_input="Play", font=main.get_font(40), base_color="White",
+                                text_input="Enter The Game", font=main.get_font(40), base_color="White",
                                 hovering_color="Green")
         Menu_BACK = Button(image=None, pos=(buttons_posX, buttons_posY[4]),
                            text_input="BACK", font=main.get_font(50), base_color="White", hovering_color="#ff006e")
