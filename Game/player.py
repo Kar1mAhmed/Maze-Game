@@ -1,6 +1,9 @@
 import pygame
 import os
 
+
+
+
 class Player(pygame.sprite.Sprite):
     def __init__(self,pos, groups, obstacle_sprites, kids, visible_sprites, character_size = 40) -> None:
         super().__init__(groups)        
@@ -17,6 +20,7 @@ class Player(pygame.sprite.Sprite):
         self.Width = character_size
         self.Height = character_size
         
+        # THE IMAGE OF AGENT WHEN MOVE Right
         AGENT_RIGHT_IMG = pygame.image.load(os.path.join("assets/Images", "heroE.png")).convert_alpha()
         AGENT_RIGHT = pygame.transform.scale(AGENT_RIGHT_IMG, (self.Width, self.Height))
 
@@ -43,6 +47,10 @@ class Player(pygame.sprite.Sprite):
         
         self.rect = self.image.get_rect(topleft = pos)
         self.hit_box = self.rect.inflate(0, 0)
+
+        pygame.mixer.init()
+        self.kid_sound = pygame.mixer.Sound("assets/Sounds/YaY.mp3")
+        self.kid_sound.set_volume(0.8)
 
 
     
@@ -114,6 +122,8 @@ class Player(pygame.sprite.Sprite):
         
         for kid in self.kids:
             if kid.hit_box.colliderect(self.hit_box):
+                self.kid_sound.play()
+                
                 self.kids.remove(kid)
                 self.visible_sprites.remove(kid)
                 self.collected_kids+=1
