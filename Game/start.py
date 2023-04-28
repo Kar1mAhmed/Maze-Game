@@ -26,7 +26,7 @@ class Game:
                         main.mixer.music.set_volume(0.5)
                         main.main_menu()
                         break
-            self.screen.fill('#e5e5e5')
+            self.screen.fill('#2b2d42')
             self.level.run()
             debug(f"Collected {self.level.player.collected_kids} of {self.level.num_of_kids}")
             pygame.display.update()

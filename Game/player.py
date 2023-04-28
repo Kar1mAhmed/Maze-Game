@@ -2,7 +2,7 @@ import pygame
 import os
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self,pos, groups, obstacle_sprites, kids, visible_sprites, character_size = 30) -> None:
+    def __init__(self,pos, groups, obstacle_sprites, kids, visible_sprites, character_size = 40) -> None:
         super().__init__(groups)        
         
         self.obstacle_sprites = obstacle_sprites
@@ -12,7 +12,7 @@ class Player(pygame.sprite.Sprite):
         self.collected_kids = 0
         
         self.direction = pygame.math.Vector2()
-        self.speed = 8
+        self.speed = 5
         
         self.Width = character_size
         self.Height = character_size
