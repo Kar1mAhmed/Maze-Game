@@ -9,9 +9,8 @@ def Win(screen_width, screen_height, time_to_finish, number_of_kids, maze_size):
     y_start = screen_height / 2 - 100
     buttons_posY = [y_start, y_start + 100, y_start + 200, y_start + 350]
     
-   
     
-    score = number_of_kids * (maze_size[0] ** maze_size[1])  / time_to_finish
+    score = (number_of_kids * (maze_size[0] * maze_size[1])  / time_to_finish) + maze_size[0] + maze_size[1]
 
     while True:
         OPTIONS_MOUSE_POS = pygame.mouse.get_pos()
