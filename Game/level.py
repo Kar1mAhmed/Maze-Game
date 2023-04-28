@@ -7,7 +7,7 @@ from Game.kid import Kid
 from Helpers.Debug import debug
 
 class Level:
-    def __init__(self, rows=5, cols=5, num_of_kids=2):
+    def __init__(self, rows=8, cols=5, num_of_kids=5):
         
         # get the display surface
         self.display = pygame.display.get_surface()

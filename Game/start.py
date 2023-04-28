@@ -20,6 +20,10 @@ class Game:
         self.level = Level()
     
     def run(self):
+        pygame.mixer.init()
+        game_sound = pygame.mixer.Sound("assets/Sounds/background.wav")
+        game_sound.set_volume(0.01)
+        game_sound.play()
         start_time = time.time()
         while True:
             for event in pygame.event.get():
@@ -38,6 +42,8 @@ class Game:
             if self.level.player.collected_kids == self.level.num_of_kids:
                 finish_time = time.time() - start_time
                 self.level = Level()
+                game_sound.set_volume(0.0)
+                main.mixer.music.unpause()
                 Win(self.Width, self.Height, finish_time, self.level.num_of_kids, (self.level.rows, self.level.cols))
                 break
                 

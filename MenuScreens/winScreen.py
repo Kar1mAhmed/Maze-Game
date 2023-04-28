@@ -15,7 +15,8 @@ def Win(screen_width, screen_height, time_to_finish, number_of_kids, maze_size):
     while True:
         OPTIONS_MOUSE_POS = pygame.mouse.get_pos()
         
-    
+        
+
         main.SCREEN.fill("white")
         main.SCREEN.blit(main.BG, (0, 0))
         
@@ -46,6 +47,7 @@ def Win(screen_width, screen_height, time_to_finish, number_of_kids, maze_size):
             if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         main.mixer.music.set_volume(0.5)
+                        main.mixer.music.unpause()
                         main.main_menu()
                         break
             if event.type == pygame.MOUSEBUTTONDOWN:

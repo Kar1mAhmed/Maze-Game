@@ -10,7 +10,7 @@ from Helpers.Debug import debug
 
 pygame.init()
 
-##### Global Variables #####aa
+##### Global Variables #####
 info = pygame.display.Info()
 screenXsize = 1920
 screenYsize = 1080
