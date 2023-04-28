@@ -22,8 +22,8 @@ class Game:
     def run(self):
         pygame.mixer.init()
         game_sound = pygame.mixer.Sound("assets/Sounds/background.wav")
-        game_sound.set_volume(0.01)
-        game_sound.play()
+        game_sound.set_volume(0.1)
+        game_sound.play(-1)
         start_time = time.time()
         while True:
             for event in pygame.event.get():
@@ -32,7 +32,9 @@ class Game:
                     sys.exit()
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
+                        game_sound.set_volume(0)
                         main.mixer.music.set_volume(0.5)
+                        main.mixer.music.unpause()
                         main.main_menu()
                         break
             self.screen.fill('#2b2d42')

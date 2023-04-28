@@ -21,7 +21,7 @@ def Win(screen_width, screen_height, time_to_finish, number_of_kids, maze_size):
         main.SCREEN.blit(main.BG, (0, 0))
         
         MENU_TEXT = main.get_font(110).render("Winner :)", True, "White")
-        MENU_RECT = MENU_TEXT.get_rect(center=(buttons_posX, 80))
+        MENU_RECT = MENU_TEXT.get_rect(center=(buttons_posX, 150))
         main.SCREEN.blit(MENU_TEXT, MENU_RECT)
 
         Time = Button(image=None, pos=(buttons_posX, buttons_posY[0]),

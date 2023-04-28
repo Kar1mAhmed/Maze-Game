@@ -8,7 +8,7 @@ class Player(pygame.sprite.Sprite):
     def __init__(self,pos, groups, obstacle_sprites, kids, visible_sprites, character_size = 40) -> None:
         super().__init__(groups)        
         
-        self.obstacle_sprites = obstacle_sprites
+        self.obstacle_sprites = obstacle_sprites # Wall places 
         self.visible_sprites = visible_sprites
         self.kids = kids
         
@@ -66,7 +66,6 @@ class Player(pygame.sprite.Sprite):
         else:
             self.direction.y = 0
             
-        
         if keys[pygame.K_a]:
             self.direction.x = -1
             self.image = self.Agent_shapes['Left']
@@ -78,9 +77,7 @@ class Player(pygame.sprite.Sprite):
     
     def move(self, speed):
         
-        
         self.collision_with_kid()
-        
         
         if self.direction.magnitude() != 0  : # to avoid division by zero
             self.direction = self.direction.normalize()
@@ -126,9 +123,8 @@ class Player(pygame.sprite.Sprite):
                 
                 self.kids.remove(kid)
                 self.visible_sprites.remove(kid)
-                self.collected_kids+=1
+                self.collected_kids+=1  
                     
     def update(self):
         self.input()
         self.move(self.speed)
-        
