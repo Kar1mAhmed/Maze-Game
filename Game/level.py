@@ -7,7 +7,7 @@ from Game.kid import Kid
 from Helpers.Debug import debug
 
 class Level:
-    def __init__(self, rows=40, cols=40, num_of_kids=10):
+    def __init__(self, rows=20, cols=20, num_of_kids=10):
         
         # get the display surface
         self.display = pygame.display.get_surface()
@@ -17,6 +17,7 @@ class Level:
         my_maze = maze(rows=rows, cols=cols)
         my_maze.CreateMaze()
         self.Map = my_maze.maze_map
+        self.Map[(1, 1)]['W'] = 1
         
         # Sprit Group setup
         self.visible_sprites = YSortCameraGroup()
@@ -31,9 +32,11 @@ class Level:
         
     def create_map(self):
         for key, values in self.Map.items():
+            
             col_index, row_index = key
             col_index-=1
             row_index-=1
+            
             if values['N'] == 0:
                 Tile((row_index * self.block_size, col_index * self.block_size), [self.visible_sprites, self.obstacles_sprites], 'horz.png')
             if values['S'] == 0:

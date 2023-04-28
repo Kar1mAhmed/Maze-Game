@@ -1,11 +1,9 @@
 import pygame
+import os
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self,pos, groups, obstacle_sprites, kids, visible_sprites) -> None:
+    def __init__(self,pos, groups, obstacle_sprites, kids, visible_sprites, character_size = 30) -> None:
         super().__init__(groups)        
-        self.image = pygame.image.load('assets/Images/hero.png').convert_alpha()
-        self.rect = self.image.get_rect(topleft = pos)
-        self.hit_box = self.rect.inflate(0, 0)
         
         self.obstacle_sprites = obstacle_sprites
         self.visible_sprites = visible_sprites
@@ -15,6 +13,37 @@ class Player(pygame.sprite.Sprite):
         
         self.direction = pygame.math.Vector2()
         self.speed = 8
+        
+        self.Width = character_size
+        self.Height = character_size
+        
+        AGENT_RIGHT_IMG = pygame.image.load(os.path.join("assets/Images", "heroE.png")).convert_alpha()
+        AGENT_RIGHT = pygame.transform.scale(AGENT_RIGHT_IMG, (self.Width, self.Height))
+
+        # THE IMAGE OF AGENT WHEN MOVE LEFT
+        AGENT_LEFT_IMG = pygame.image.load(os.path.join("assets/Images", "heroW.png")).convert_alpha()
+        AGENT_LEFT = pygame.transform.scale(AGENT_LEFT_IMG, (self.Width, self.Height))
+
+        # THE IMAGE OF AGENT WHEN MOVE UP
+        AGENT_UP_IMG = pygame.image.load(os.path.join("assets/Images", "heroN.png")).convert_alpha()
+        AGENT_UP = pygame.transform.scale(AGENT_UP_IMG, (self.Width, self.Height))
+
+        # THE IMAGE OF AGENT WHEN MOVE Down
+        AGENT_DOWN_IMG= pygame.image.load(os.path.join("assets/Images", "hero.png")).convert_alpha()
+        AGENT_DOWN = pygame.transform.scale(AGENT_DOWN_IMG, (self.Width, self.Height))
+
+        self.Agent_shapes = {
+            'Right': AGENT_RIGHT,
+            'Left': AGENT_LEFT,
+            'Up': AGENT_UP,
+            'Down': AGENT_DOWN
+        }
+        
+        self.image = self.Agent_shapes["Down"]
+        
+        self.rect = self.image.get_rect(topleft = pos)
+        self.hit_box = self.rect.inflate(0, 0)
+
 
     
     def input(self):
@@ -22,19 +51,25 @@ class Player(pygame.sprite.Sprite):
         
         if keys[pygame.K_w]:
             self.direction.y = -1
+            self.image = self.Agent_shapes['Up']
         elif keys[pygame.K_s]:
             self.direction.y = 1
+            self.image = self.Agent_shapes['Down']
         else:
             self.direction.y = 0
+            
         
         if keys[pygame.K_a]:
             self.direction.x = -1
+            self.image = self.Agent_shapes['Left']
         elif keys[pygame.K_d]:
             self.direction.x = 1
+            self.image = self.Agent_shapes['Right']
         else:
             self.direction.x = 0
     
     def move(self, speed):
+        
         
         self.collision_with_kid()
         

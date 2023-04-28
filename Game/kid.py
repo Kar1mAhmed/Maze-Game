@@ -1,10 +1,19 @@
 import pygame
-
+import random
+import os
 
 class Kid(pygame.sprite.Sprite):
-    def __init__(self,pos, groups) -> None:
+    def __init__(self,pos, groups, character_size=30) -> None:
         super().__init__(groups)
         
-        self.image = pygame.image.load('assets/Images/kid-0.png').convert_alpha()
+        # Getting random kid photo
+        kid_photo = str(random.randint(0,3))
+        self.image =pygame.image.load(os.path.join("assets\Images", f"kid-{kid_photo}.png")).convert_alpha()
+        
+        self.Width = character_size
+        self.Height = character_size
+        
+        self.image = pygame.transform.scale(self.image, (self.Width, self.Height))
+
         self.rect = self.image.get_rect(topleft = pos)
         self.hit_box = self.rect.inflate(0, 0) # change the size of rect
