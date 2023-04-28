@@ -7,7 +7,7 @@ from Game.kid import Kid
 from Helpers.Debug import debug
 
 class Level:
-    def __init__(self, rows=20, cols=20, num_of_kids=10):
+    def __init__(self, rows=5, cols=5, num_of_kids=2):
         
         # get the display surface
         self.display = pygame.display.get_surface()
@@ -15,7 +15,7 @@ class Level:
         self.cols = cols
         
         my_maze = maze(rows=rows, cols=cols)
-        my_maze.CreateMaze()
+        my_maze.CreateMaze(pattern='h', loopPercent=10)
         self.Map = my_maze.maze_map
         self.Map[(1, 1)]['W'] = 1
         

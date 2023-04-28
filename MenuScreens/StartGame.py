@@ -23,7 +23,7 @@ def ChooseYourAlgo(screen_width, screen_height):
                          text_input="A*", font=main.get_font(40), base_color="White", hovering_color="#06d6a0")
         START_NEW_GAME = Button(image=None, pos=(buttons_posX, buttons_posY[3]),
                                 text_input="Enter The Game", font=main.get_font(40), base_color="White",
-                                hovering_color="Green")
+                                hovering_color="#758bfd")
         Menu_BACK = Button(image=None, pos=(buttons_posX, buttons_posY[4]),
                            text_input="BACK", font=main.get_font(50), base_color="White", hovering_color="#ff006e")
 
