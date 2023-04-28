@@ -1,2 +1,1 @@
-
-info = pygame.display.Info()
+)

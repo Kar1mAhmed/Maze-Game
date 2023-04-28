@@ -20,8 +20,8 @@ class Game:
         self.level = Level()
     
     def run(self):
+        start_time = time.time()
         while True:
-            start_time = time.time()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
