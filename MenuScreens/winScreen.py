@@ -4,7 +4,7 @@ from Helpers.button import Button
 
 
 
-def Win(screen_width, screen_height, time_to_finish, number_of_kids, maze_size):
+def Win(screen_width, screen_height, time_to_finish, number_of_kids, maze_size, win):
     buttons_posX = screen_width / 2
     y_start = screen_height / 2 - 100
     buttons_posY = [y_start, y_start + 100, y_start + 200, y_start + 350]
@@ -20,9 +20,13 @@ def Win(screen_width, screen_height, time_to_finish, number_of_kids, maze_size):
         main.SCREEN.fill("white")
         main.SCREEN.blit(main.BG, (0, 0))
         
-        MENU_TEXT = main.get_font(110).render("Winner :)", True, "White")
-        MENU_RECT = MENU_TEXT.get_rect(center=(buttons_posX, 150))
-        main.SCREEN.blit(MENU_TEXT, MENU_RECT)
+        if win:
+            Status = main.get_font(110).render("Winner :)", True, "White")
+        else:
+            Status = main.get_font(110).render("Game Over :(", True, "White")
+
+        MENU_RECT = Status.get_rect(center=(buttons_posX, 200))
+        main.SCREEN.blit(Status, MENU_RECT)
 
         Time = Button(image=None, pos=(buttons_posX, buttons_posY[0]),
                                    text_input=f"Time To Rescue The Kids : {time_to_finish:.2f}", font=main.get_font(50), base_color="White",

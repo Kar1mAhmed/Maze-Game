@@ -8,7 +8,7 @@ from MenuScreens.winScreen import Win
 from Helpers.Debug import debug
 
 class Game:
-    def __init__(self, WIDTH=1920, HEIGHT=1080, end_time =15):
+    def __init__(self, WIDTH=1920, HEIGHT=1080):
         self.Width = WIDTH
         self.Height = HEIGHT
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -21,7 +21,9 @@ class Game:
         self.game_sound.set_volume(0.02)
         
         self.level = Level()
-        self.end_time = end_time
+        self.end_time = self.level.level_time
+        
+        self.win = True
     
     def esc(self):
         self.game_sound.stop()
@@ -35,7 +37,7 @@ class Game:
         self.level = Level()
         self.game_sound.set_volume(0.0)
         main.mixer.music.unpause()
-        Win(self.Width, self.Height, finish_time, collected_kids, (self.level.rows, self.level.cols))
+        Win(self.Width, self.Height, finish_time, collected_kids, (self.level.rows, self.level.cols), self.win)
         
         
     def handel_bomb_sound(self, current_time):
@@ -65,6 +67,8 @@ class Game:
             time_left = self.end_time - current_time
             debug(f'Time Left : {(time_left):.2f}')
             if self.level.player.collected_kids == self.level.num_of_kids or time_left <= 0:
+                if time_left < 0:
+                    self.win = False
                 self.game_end(start_time, self.level.player.collected_kids)
                 break
                 

@@ -10,7 +10,7 @@ from Game.maze_creator import maze
 from Helpers.Debug import debug
 
 class Level:
-    def __init__(self, rows=10, cols=10, num_of_kids=5):
+    def __init__(self, rows=20, cols=20, num_of_kids=5):
         
         # get the display surface
         self.display = pygame.display.get_surface()
@@ -29,6 +29,8 @@ class Level:
         
         self.num_of_kids = num_of_kids
         self.block_size = 64
+        
+        self.level_time = num_of_kids + rows + cols + 10
 
         #sprite setup   
         self.create_map()
