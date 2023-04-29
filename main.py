@@ -8,15 +8,15 @@ from MenuScreens.StartGame import ChooseYourAlgo
 from Helpers.button import Button
 from Helpers.Debug import debug
 
+
+from settings import *
+
 pygame.init()
 
 ##### Global Variables #####
-info = pygame.display.Info()
-screen_width = info.current_w
-screen_height = info.current_h
 
-screenXsize =  info.current_w
-screenYsize = info.current_h
+screenXsize =  SCREEN_WIDTH
+screenYsize = SCREEN_HEIGHT
 
 fontSize = 50
 

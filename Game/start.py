@@ -6,9 +6,11 @@ import main
 from MenuScreens.winScreen import Win
 
 from Helpers.Debug import debug
+from settings import *
+
 
 class Game:
-    def __init__(self, WIDTH=1920, HEIGHT=1080):
+    def __init__(self, WIDTH=SCREEN_WIDTH, HEIGHT=SCREEN_HEIGHT):
         self.Width = WIDTH
         self.Height = HEIGHT
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
