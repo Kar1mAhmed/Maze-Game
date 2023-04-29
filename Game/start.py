@@ -43,7 +43,7 @@ class Game:
         
         
     def handel_bomb_sound(self, current_time):
-        if self.end_time - current_time < 6.5:
+        if self.end_time - current_time < 7:
             self.level.Bomb.last_beb()
 
                 
