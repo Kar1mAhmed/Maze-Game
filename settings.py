@@ -1,9 +1,9 @@
 import pygame
 
 
-Number_of_rows = 10
-Number_of_cols = 15
-Num_of_kids = 1
+Number_of_rows = 100
+Number_of_cols = 5
+Num_of_kids = 12
 Level_time = 'default'
 
 

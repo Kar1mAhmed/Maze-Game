@@ -68,7 +68,7 @@ class Game:
             
             time_left = self.end_time - current_time
             debug(f'Time Left : {(time_left):.2f}')
-            debug(f'Rescued {self.level.player.collected_kids} of {self.level.num_of_kids}',x=12, y=40)
+            debug(f'Rescued {self.level.player.collected_kids} of {self.level.num_of_kids}', y=40)
             if self.level.player.collected_kids == self.level.num_of_kids or time_left <= 0:
                 if time_left < 0:
                     self.win = False
