@@ -2,6 +2,7 @@ import pygame, sys, time
 from Game.level import Level
 import Game.maze_creator
 import main
+from settings import *
 
 from MenuScreens.winScreen import Win
 
@@ -20,7 +21,7 @@ class Game:
         self.game_sound = pygame.mixer.Sound("assets/Sounds/background.wav")
         self.game_sound.set_volume(0.02)
         
-        self.level = Level()
+        self.level = Level(Number_of_rows, Number_of_cols, Num_of_kids, Level_time)
         self.end_time = self.level.level_time
         
         self.win = True
