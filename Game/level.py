@@ -9,8 +9,10 @@ from Game.bomb import Bomb
 from Game.maze_creator import maze
 from Helpers.Debug import debug
 
+from settings import *
+
 class Level:
-    def __init__(self, rows=20, cols=20, num_of_kids=5, time='default'):
+    def __init__(self, rows=Number_of_rows, cols=Number_of_cols, num_of_kids=Num_of_kids, time=Level_time):
         
         # get the display surface
         self.display = pygame.display.get_surface()

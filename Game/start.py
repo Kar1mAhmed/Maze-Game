@@ -2,7 +2,6 @@ import pygame, sys, time
 from Game.level import Level
 import Game.maze_creator
 import main
-from settings import *
 
 from MenuScreens.winScreen import Win
 
@@ -21,7 +20,7 @@ class Game:
         self.game_sound = pygame.mixer.Sound("assets/Sounds/background.wav")
         self.game_sound.set_volume(0.02)
         
-        self.level = Level(Number_of_rows, Number_of_cols, Num_of_kids, Level_time)
+        self.level = Level()
         self.end_time = self.level.level_time
         
         self.win = True
@@ -67,6 +66,7 @@ class Game:
             
             time_left = self.end_time - current_time
             debug(f'Time Left : {(time_left):.2f}')
+            debug(f'Rescued {self.level.player.collected_kids} of {self.level.num_of_kids}',x=12, y=40)
             if self.level.player.collected_kids == self.level.num_of_kids or time_left <= 0:
                 if time_left < 0:
                     self.win = False
