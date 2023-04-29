@@ -1,4 +1,4 @@
-import pygame, sys
+import pygame
 import main
 from Helpers.button import Button
 
