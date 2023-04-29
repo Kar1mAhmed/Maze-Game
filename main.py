@@ -12,8 +12,11 @@ pygame.init()
 
 ##### Global Variables #####
 info = pygame.display.Info()
-screenXsize = 1920
-screenYsize = 1080
+screen_width = info.current_w
+screen_height = info.current_h
+
+screenXsize =  info.current_w
+screenYsize = info.current_h
 
 fontSize = 50
 

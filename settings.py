@@ -1,4 +1,4 @@
-Number_of_rows = 15
-Number_of_cols = 10
-Num_of_kids = 3
+Number_of_rows = 30
+Number_of_cols = 30
+Num_of_kids = 8
 Level_time = 'default'

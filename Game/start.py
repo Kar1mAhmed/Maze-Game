@@ -47,7 +47,7 @@ class Game:
                 
     def run(self):       
         start_time = time.time()
-        self.game_sound.play()
+        self.game_sound.play(-1)
         while True:
             self.game_sound.set_volume(0.02)
             current_time = time.time() - start_time
