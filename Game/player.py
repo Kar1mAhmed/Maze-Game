@@ -48,9 +48,6 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(topleft = pos)
         self.hit_box = self.rect.inflate(0, 0)
 
-        pygame.mixer.init()
-        self.kid_sound = pygame.mixer.Sound("assets/Sounds/YaY.mp3")
-        self.kid_sound.set_volume(0.8)
 
 
     
@@ -115,12 +112,12 @@ class Player(pygame.sprite.Sprite):
                     if self.direction.y < 0: # moving up
                         self.hit_box.top = sprite.hit_box.bottom
     
+    
     def collision_with_kid(self):
         
         for kid in self.kids:
             if kid.hit_box.colliderect(self.hit_box):
-                self.kid_sound.play()
-                
+                kid.yay()
                 self.kids.remove(kid)
                 self.visible_sprites.remove(kid)
                 self.collected_kids+=1  

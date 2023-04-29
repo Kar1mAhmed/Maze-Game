@@ -3,7 +3,7 @@ import random
 import os
 
 class Kid(pygame.sprite.Sprite):
-    def __init__(self,pos, groups, character_size=30) -> None:
+    def __init__(self,pos, groups, character_size=30):
         super().__init__(groups)
         
         # Getting random kid photo
@@ -17,3 +17,11 @@ class Kid(pygame.sprite.Sprite):
 
         self.rect = self.image.get_rect(topleft = pos)
         self.hit_box = self.rect.inflate(0, 0) # change the size of rect
+        
+        
+        self.sound = pygame.mixer.Sound('assets/Sounds/kid_sound.wav')
+        self.sound.set_volume(0.8)
+        
+    def yay(self):
+        self.sound.play()
+        

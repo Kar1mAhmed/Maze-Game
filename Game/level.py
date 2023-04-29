@@ -1,9 +1,12 @@
 import pygame
 import random
+
 from Game.tile import Tile
 from Game.player import Player
-from Game.maze_creator import maze
 from Game.kid import Kid
+from Game.bomb import Bomb
+
+from Game.maze_creator import maze
 from Helpers.Debug import debug
 
 class Level:
@@ -46,8 +49,11 @@ class Level:
             if values['E'] == 0:
                 Tile(((row_index + 1) * self.block_size, col_index * self.block_size), [self.visible_sprites, self.obstacles_sprites], 'vertWhite5_64.png')
                 
-            
-            
+        bomb_x = self.block_size * self.rows / 2    + 30
+        bomb_y = self.block_size * self.cols / 2    + 30
+    
+        self.Bomb = Bomb((bomb_x, bomb_y), [self.visible_sprites])
+        
         for _ in range(self.num_of_kids):   
             SPAWN_START = 2
             BLOCK_SPAWN_POSITION = 10
@@ -58,7 +64,7 @@ class Level:
             Kid((kid_x , kid_y ), [self.visible_sprites, self.kids])
             
         self.player = Player((self.block_size / 3, self.block_size / 3), [self.visible_sprites], self.obstacles_sprites, self.kids, self.visible_sprites)
-
+         
             
     def run(self):
         self.visible_sprites.custom_draw(self.player)
