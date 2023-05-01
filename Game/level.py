@@ -7,13 +7,13 @@ from Game.kid import Kid
 from Game.bomb import Bomb
 
 from Game.maze_creator import maze
-from Helpers.Debug import debug
 
-from settings import *
+import settings as s
+
 
 class Level:
-    def __init__(self, rows=Number_of_rows, cols=Number_of_cols, num_of_kids=Num_of_kids, time=Level_time):
-        
+    def __init__(self):
+        rows, cols, num_of_kids, time = s.get_settings()
         # get the display surface
         self.display = pygame.display.get_surface()
         self.rows = rows

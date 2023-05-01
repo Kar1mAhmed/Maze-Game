@@ -9,6 +9,7 @@ from Helpers.Debug import debug
 from settings import *
 
 
+
 class Game:
     def __init__(self, WIDTH=SCREEN_WIDTH, HEIGHT=SCREEN_HEIGHT):
         self.Width = WIDTH
@@ -22,16 +23,21 @@ class Game:
         self.game_sound = pygame.mixer.Sound("assets/Sounds/background.wav")
         self.game_sound.set_volume(0.02)
         
-        self.level = Level()
-        self.end_time = self.level.level_time
+        self.level = None
+        self.end_time = None
         
         self.win = True
     
 
                 
-    def run(self):       
+    def run(self):   
+            
+        self.level = Level()
+        self.end_time = self.level.level_time
+
         start_time = time.time()
         self.game_sound.play(-1)
+        
         while True:
             self.game_sound.set_volume(0.02)
             current_time = time.time() - start_time
@@ -78,6 +84,9 @@ class Game:
     def handel_bomb_sound(self, current_time):
         if self.end_time - current_time < 7:
             self.level.Bomb.last_beb()
+            
+            
+            
 if __name__ == "__main__":
     game = Game()
     game.run()

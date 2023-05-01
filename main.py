@@ -75,7 +75,6 @@ def main_menu():
                 if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                     pygame.quit()
                     sys.exit()
-        debug("Debugging")
         pygame.display.update()
 
 
