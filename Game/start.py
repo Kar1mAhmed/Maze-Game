@@ -21,8 +21,9 @@ class Game:
         self.clock = pygame.time.Clock()
         
         self.game_sound = pygame.mixer.Sound("assets/Sounds/background.wav")
-        self.game_sound.set_volume(0.02)
-        
+        self.game_sound.set_volume(0.0)
+        self.game_sound.play(-1)
+
         self.level = None
         self.end_time = None
         
@@ -36,7 +37,6 @@ class Game:
         self.end_time = self.level.level_time
 
         start_time = time.time()
-        self.game_sound.play(-1)
         
         while True:
             self.game_sound.set_volume(0.02)
@@ -55,8 +55,9 @@ class Game:
             self.level.run()
             
             time_left = self.end_time - current_time
-            debug(f'Time Left : {(time_left):.2f}')
-            debug(f'Rescued {self.level.player.collected_kids} of {self.level.num_of_kids}', y=40)
+            debug("Press ESC to end the game")
+            debug(f'Time Left : {(time_left):.2f}',x=SCREEN_WIDTH / 2)
+            debug(f'Rescued {self.level.player.collected_kids} of {self.level.num_of_kids}',x=SCREEN_WIDTH/2, y=40)
             if self.level.player.collected_kids == self.level.num_of_kids or time_left <= 0:
                 if time_left < 0:
                     self.win = False
@@ -69,7 +70,6 @@ class Game:
     def esc(self):
         self.game_sound.stop()
         main.mixer.music.set_volume(0.5)
-        main.mixer.music.unpause()
         main.main_menu()
         
     def game_end(self, start_time, collected_kids):
@@ -77,7 +77,7 @@ class Game:
         finish_time = time.time() - start_time
         self.level = Level()
         self.game_sound.set_volume(0.0)
-        main.mixer.music.unpause()
+        main.mixer.music.set_volume(0.5)
         Win(self.Width, self.Height, finish_time, collected_kids, (self.level.rows, self.level.cols), self.win)
         
         

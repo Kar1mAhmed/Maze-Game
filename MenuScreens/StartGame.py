@@ -18,21 +18,25 @@ def ChooseYourAlgo(screen_width, screen_height):
 
         PLAY_MOUSE_POS = pygame.mouse.get_pos()
 
+        info = Button(image=None, pos=(buttons_posX, 50),
+                            text_input="Left Click to increase - Right Click to decrease",
+                            font=main.get_font(20), base_color="White", hovering_color="White")
+
         Maze_rows = Button(image=None, pos=(buttons_posX, buttons_posY[0]),
                             text_input=f"Number of Maze Columns\t {settings.Number_of_rows}",
-                            font=main.get_font(40), base_color="White", hovering_color="#06d6a0")
+                            font=main.get_font(40), base_color="White", hovering_color="#7400b8")
         
         Maze_Cols = Button(image=None, pos=(buttons_posX, buttons_posY[1]),
                             text_input=f"Number of Maze Columns\t {settings.Number_of_cols}",
-                            font=main.get_font(40), base_color="White", hovering_color="#06d6a0")
+                            font=main.get_font(40), base_color="White", hovering_color="#6930c3")
         
         Kids = Button(image=None, pos=(buttons_posX, buttons_posY[2]),
                         text_input=f"Number of Kids\t {settings.Num_of_kids}",
-                        font=main.get_font(40), base_color="White", hovering_color="#06d6a0")
+                        font=main.get_font(40), base_color="White", hovering_color="#5e60ce")
         
         Time = Button(image=None, pos=(buttons_posX, buttons_posY[3]),
                         text_input=f"Bomb Time :\t {settings.Level_time}",
-                        font=main.get_font(40), base_color="White", hovering_color="#06d6a0")
+                        font=main.get_font(40), base_color="White", hovering_color="#5390d9")
         
         START_NEW_GAME = Button(image=None, pos=(buttons_posX, buttons_posY[4]),
                                 text_input="Enter The Game", font=main.get_font(60), base_color="White",
@@ -42,7 +46,7 @@ def ChooseYourAlgo(screen_width, screen_height):
                             font=main.get_font(60), base_color="White", hovering_color="#ff006e")
 
 
-        for button in [Kids, Maze_rows, Maze_Cols, Time, START_NEW_GAME, Menu_BACK]:
+        for button in [Kids, Maze_rows, Maze_Cols, Time, START_NEW_GAME, Menu_BACK, info]:
             button.changeColor(PLAY_MOUSE_POS)
             button.update(main.SCREEN)
 
@@ -53,7 +57,7 @@ def ChooseYourAlgo(screen_width, screen_height):
                 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if START_NEW_GAME.checkForInput(PLAY_MOUSE_POS):
-                    main.mixer.music.pause()
+                    main.mixer.music.set_volume(0)
                     game.run()
                     
                 if Menu_BACK.checkForInput(PLAY_MOUSE_POS):

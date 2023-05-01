@@ -39,8 +39,8 @@ def options(screen_width, screen_height):
                 if OPTIONS_BACK.checkForInput(OPTIONS_MOUSE_POS):
                     main.main_menu()
                 if SOUND_BUTTON_MUTE.checkForInput(OPTIONS_MOUSE_POS):
-                    main.mixer.music.pause()
+                    main.mixer.music.stop()
                 if SOUND_BUTTON_UnMUTE.checkForInput(OPTIONS_MOUSE_POS):
-                    main.mixer.music.unpause()
+                    main.mixer.music.play()
 
         pygame.display.update()
