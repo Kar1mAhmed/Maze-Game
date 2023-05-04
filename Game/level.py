@@ -1,13 +1,13 @@
 import pygame
 import random
 
-from Game.tile import Tile
-from Game.player import Player
-from Game.kid import Kid
-from Game.bomb import Bomb
+from Game.objects.tile import Tile
+from Game.objects.player import Player
+from Game.objects.kid import Kid
+from Game.objects.bomb import Bomb
 
-from Game.maze_solver import MazeSolverDFS_V2
-from Game.maze_creator import maze
+from Game.maze.maze_solver import MazeSolverDFS_V2
+from Game.maze.maze_creator import maze
 
 import settings as s
 

@@ -195,10 +195,13 @@ class MazeSolverDFS_V2:
         self.map[point][direction] = 0
         
 
+if __name__ == "__main__":
+    
+    from maze_creator import maze
+    
+    my_maze = maze(20, 20)
+    my_maze.CreateMaze(pattern='h', loopPercent=10)
+    my_maze = my_maze.maze_map        
 
-# my_maze = maze(5, 5)
-# my_maze.CreateMaze(pattern='h', loopPercent=10)
-# my_maze = my_maze.maze_map        
-
-# solver = MazeSolverDFS_V2(my_maze)
-# print(solver.get_path(goal=(5,5)))
+    solver = MazeSolverDFS_V2(my_maze)
+    print(solver.get_path(goal=(20,20)))

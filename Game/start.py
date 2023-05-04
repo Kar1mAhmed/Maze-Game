@@ -1,6 +1,6 @@
 import pygame, sys, time
 from Game.level import Level
-import Game.maze_creator
+import Game.maze.maze_creator
 import main
 
 from MenuScreens.winScreen import Win
