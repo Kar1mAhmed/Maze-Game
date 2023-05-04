@@ -6,6 +6,7 @@ from Game.player import Player
 from Game.kid import Kid
 from Game.bomb import Bomb
 
+from Game.maze_solver import MazeSolverDFS_V2
 from Game.maze_creator import maze
 
 import settings as s
@@ -21,8 +22,7 @@ class Level:
         
         my_maze = maze(rows=rows, cols=cols)
         my_maze.CreateMaze(pattern='h', loopPercent=10)
-        self.Map = my_maze.maze_map
-        self.Map[(1, 1)]['W'] = 1
+        self.Map = my_maze.maze_map        
         
         # Sprit Group setup
         self.visible_sprites = YSortCameraGroup()
@@ -71,7 +71,6 @@ class Level:
             Kid((kid_x , kid_y ), [self.visible_sprites, self.kids])
             
         self.player = Player((self.block_size / 3, self.block_size / 3), [self.visible_sprites], self.obstacles_sprites, self.kids, self.visible_sprites)
-         
             
     def run(self):
         self.visible_sprites.custom_draw(self.player)

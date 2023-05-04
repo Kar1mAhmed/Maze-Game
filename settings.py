@@ -14,3 +14,6 @@ def get_settings():
 
 
 SCREEN_WIDTH, SCREEN_HEIGHT = pyautogui.size()
+
+SCREEN_WIDTH, SCREEN_HEIGHT = 720, 720
+
