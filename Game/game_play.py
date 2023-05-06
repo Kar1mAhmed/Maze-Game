@@ -60,6 +60,7 @@ class Game:
             
             time_left = self.end_time - current_time
             debug("Press E to use DFS ability", y=50)
+            debug("Press Q to use BFS ability", y=75)
             debug("Press ESC to end the game")
             debug(f'Time Left : {(time_left):.2f}',x=SCREEN_WIDTH / 2)
             debug(f'Rescued {self.level.player.collected_kids} of {self.level.num_of_kids}',x=SCREEN_WIDTH/2, y=40)
