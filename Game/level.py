@@ -42,7 +42,7 @@ class Level:
         if isinstance(time, int):
             self.level_time = time
         else:
-            self.level_time = num_of_kids * 3 + rows + cols 
+            self.level_time = num_of_kids * 10 + rows + cols 
 
         self.visual_path = False
         self.kids_saved = 0

@@ -42,7 +42,12 @@ class MazeSolverDFS:
             self.goals.remove(current_point)
             return
         
-        for key, value in self.map[current_point].items():
+        # To make Dfs fully random
+        items = list(self.map[current_point].items())
+        random.shuffle(items)
+        shuffled_items = dict(items)
+        
+        for key, value in shuffled_items.items():
             
             if len(self.goals) == 0:
                 return
@@ -62,19 +67,13 @@ class MazeSolverDFS:
         
         
     def _get_next_point(self, current_point, direction):
-        directions = ['E', 'W', 'N', 'S']
-        random.shuffle(direction) # to make DFS fully random
-        
-        if direction == directions[0]:
+        if direction == 'E':
             return (current_point[0], current_point[1] + 1)
-        
-        elif direction == directions[1]:
+        elif direction == 'W':
             return (current_point[0], current_point[1] - 1)
-        
-        elif direction == directions[2]:
+        elif direction == 'N':
             return (current_point[0] - 1, current_point[1])
-        
-        elif direction == directions[3]:
+        elif direction == 'S':
             return (current_point[0] + 1, current_point[1])
         else:
             print(f"Wrong direction Given {direction}")
