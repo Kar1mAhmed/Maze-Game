@@ -1,5 +1,6 @@
 import pygame
 import random
+import copy
 
 from Game.objects.tile import Tile
 from Game.objects.player import Player
@@ -24,7 +25,8 @@ class Level:
         my_maze.CreateMaze(pattern='h', loopPercent=10)
         self.Map = my_maze.maze_map
         
-        self.solver = MazeSolverDFS(self.Map)        
+        map_copy = copy.deepcopy(self.Map)
+        self.solver = MazeSolverDFS(map_copy)        
         
         # Sprit Group setup
         self.visible_sprites = YSortCameraGroup()
@@ -32,6 +34,8 @@ class Level:
         self.obstacles_sprites = pygame.sprite.Group()
         self.kids = pygame.sprite.Group()
         
+        self.kids_positions = []
+
         self.num_of_kids = num_of_kids
         self.block_size = 64
         
@@ -65,7 +69,6 @@ class Level:
     
         self.Bomb = Bomb((bomb_x, bomb_y), [self.visible_sprites])
         
-        self.kids_positions = []
         
         for _ in range(self.num_of_kids):   
             SPAWN_START = 2
@@ -84,6 +87,7 @@ class Level:
             
         self.player = Player((self.block_size / 3, self.block_size / 3), [self.visible_sprites], self.obstacles_sprites, self.kids, self.visible_sprites)
             
+            
     def run(self):
         self.visible_sprites.custom_draw(self.player)
         self.visible_sprites.update()
@@ -91,17 +95,19 @@ class Level:
                 
     
     def draw_path(self):
+        map_copy = copy.deepcopy(self.Map)
+        self.solver.reset(map_copy)
+        
         self.visible_sprites.remove(self.path_sprites)
         self.path_sprites.empty()
         
+        paths = self.solver.get_path(self.kids_positions.copy(), self.player.block_position())
         
         
-        path = self.solver.get_path(self.kids_positions, self.player.block_position())
+        start_transparency = 255
+        transparency_step = start_transparency  / len(paths[0]) 
         
-        start_transparency = 200
-        transparency_step = (start_transparency - 50) / len(path) 
-        
-        for step, block in enumerate(path):
+        for step, block in enumerate(paths[0]):
             current_transparency = start_transparency - step * transparency_step
             
             Tile((block[1] * self.block_size - 40, block[0] * self.block_size - 40),

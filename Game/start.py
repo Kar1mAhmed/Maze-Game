@@ -57,6 +57,7 @@ class Game:
             self.level.run()
             
             time_left = self.end_time - current_time
+            debug(self.level.kids_positions, y=200)
             debug("Press ESC to end the game")
             debug(f'Time Left : {(time_left):.2f}',x=SCREEN_WIDTH / 2)
             debug(f'Rescued {self.level.player.collected_kids} of {self.level.num_of_kids}',x=SCREEN_WIDTH/2, y=40)
