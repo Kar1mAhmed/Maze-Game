@@ -125,9 +125,10 @@ class Level:
         map_copy = copy.deepcopy(self.Map)
         solver.reset(map_copy)
         
+        
         self.visible_sprites.remove(self.path_sprites)
         self.path_sprites.empty()
-        
+            
         paths = solver.get_path(self.kids_positions.copy(), self.player.block_position())
         
         
@@ -139,7 +140,7 @@ class Level:
             
             Tile((block[1] * self.block_size - 40, block[0] * self.block_size - 40),
                     [self.path_sprites], path_img, current_transparency)
-            
+        
         # Control the Visualization of path   
         if self.visual_path == False:
             self.visible_sprites.add(self.path_sprites)
