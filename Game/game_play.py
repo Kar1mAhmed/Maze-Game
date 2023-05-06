@@ -52,7 +52,9 @@ class Game:
                         self.esc()
                         break
                     if event.key == pygame.K_e:
-                        self.level.draw_path()
+                        self.level.draw_path(Algo='DFS')
+                    if event.key == pygame.K_q:
+                        self.level.draw_path(Algo='BFS')
             self.screen.fill('#2b2d42')
             self.level.run()
             
@@ -72,7 +74,7 @@ class Game:
 
     def esc(self):
         self.game_sound.stop()
-        main.mixer.music.set_volume(0.5)
+        main.mixer.music.set_volume(0.2)
         main.main_menu()
         
     def game_end(self, start_time, collected_kids):
@@ -80,7 +82,7 @@ class Game:
         finish_time = time.time() - start_time
         self.level = Level()
         self.game_sound.set_volume(0.0)
-        main.mixer.music.set_volume(0.5)
+        main.mixer.music.set_volume(0.2)
         Win(self.Width, self.Height, finish_time, collected_kids, (self.level.rows, self.level.cols), self.win)
         
         

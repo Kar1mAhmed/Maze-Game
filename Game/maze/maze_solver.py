@@ -90,22 +90,38 @@ class MazeSolverBFS:
             self.map = maze
             self.visited = set()
             self.queue = queue.Queue()
-            self.goal = None
+            self.goals = None
             self.visited = set()
             self.ans = []
         
-        def get_path(self, goal, start = (1,1)):
-            self.goal = goal
-            self.queue.put(start)
+        def get_path(self, goals, start = (1,1)):
+            self.goals = goals
+            self.queue.put([start])
             self._solve()
             return self.ans
+        
+        def reset(self, maze):
+            self.map = maze
+            self.visited = set()
+            self.stack = []
+            self.goals = []
+            self.visited = set()
+            self.ans = []
             
         def _solve(self):
-            current_point = self.stack[last_ele]
+            
+            #base case
+            if len(self.goals) == 0:
+                return
+            
+            current_path = self.queue.get()
+            current_point = current_path[-1]
+            
             self.visited.add(current_point)
             
-            if current_point in self.goal:
-                self.ans = self.stack.copy()
+            if current_point in self.goals:
+                self.ans.append(current_path.copy())
+                self.goals.remove(current_point)
                 return
             
             for key, value in self.map[current_point].items():
@@ -113,13 +129,13 @@ class MazeSolverBFS:
                     next_point = self._get_next_point(current_point, key)
                     self._remove_move(current_point, key)
                     
-                    if next_point  in self.visited:
+                    if next_point in self.visited:
                         continue
                     
-                    self.queue.put(next_point)
-                    self._solve()
-            
-            self.stack.pop()
+                    new_path = current_path + [next_point]
+                    self.queue.put(new_path)
+                    
+            self._solve()
             return 
             
             
@@ -143,13 +159,10 @@ class MazeSolverBFS:
 if __name__ == "__main__":
     
     from maze_creator import maze
-    Map = maze(3,3)
+    Map = maze(5,5)
     Map.CreateMaze(pattern='h', loopPercent=10)
     
     Map = Map.maze_map
-    print(type(Map))
-    solver = MazeSolverDFS(Map.copy())
+    solver = MazeSolverBFS(Map.copy())
 
-    # print(solver.get_path([(2,2)], (1,1)))
-    # solver.reset(Map.copy())
-    # print(solver.get_path([(3,3)], (2,2)))
+    print(solver.get_path([(5,5)], (1,1)))

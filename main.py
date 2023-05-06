@@ -30,6 +30,7 @@ pygame.display.set_caption("Fire Fighter")
 
 
 mixer.music.load('assets/Sounds/StrangerThings.wav')
+mixer.music.set_volume(0.2)
 mixer.music.play(-1)
 
 

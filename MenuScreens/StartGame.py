@@ -2,7 +2,7 @@ import main
 import pygame
 from Helpers.button import Button
 import sys
-from Game.start import Game
+from Game.game_play import Game
 
 import settings
 

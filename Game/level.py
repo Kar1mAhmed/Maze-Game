@@ -8,6 +8,8 @@ from Game.objects.kid import Kid
 from Game.objects.bomb import Bomb
 
 from Game.maze.maze_solver import MazeSolverDFS
+from Game.maze.maze_solver import MazeSolverBFS
+
 from Game.maze.maze_creator import maze
 
 import settings as s
@@ -26,7 +28,8 @@ class Level:
         self.Map = my_maze.maze_map
         
         map_copy = copy.deepcopy(self.Map)
-        self.solver = MazeSolverDFS(map_copy)        
+        self.solver_DFS = MazeSolverDFS(map_copy)        
+        self.solver_BFS = MazeSolverBFS(map_copy)
         
         # Sprit Group setup
         self.visible_sprites = YSortCameraGroup()
@@ -104,18 +107,28 @@ class Level:
     
                 
     
-    def draw_path(self):
+    def draw_path(self, Algo='DFS'):
         
         if len(self.kids_positions) < 1:
             return
         
+        solver = None
+        path_img = None
+        
+        if Algo == "DFS":
+            solver = self.solver_DFS
+            path_img = 'path_yellow_20.png'
+        elif Algo == "BFS":
+            path_img = 'path_Red_20.png'
+            solver = self.solver_BFS
+        
         map_copy = copy.deepcopy(self.Map)
-        self.solver.reset(map_copy)
+        solver.reset(map_copy)
         
         self.visible_sprites.remove(self.path_sprites)
         self.path_sprites.empty()
         
-        paths = self.solver.get_path(self.kids_positions.copy(), self.player.block_position())
+        paths = solver.get_path(self.kids_positions.copy(), self.player.block_position())
         
         
         start_transparency = 255
@@ -125,7 +138,7 @@ class Level:
             current_transparency = start_transparency - step * transparency_step
             
             Tile((block[1] * self.block_size - 40, block[0] * self.block_size - 40),
-                    [self.path_sprites], 'path_20.png', current_transparency)
+                    [self.path_sprites], path_img, current_transparency)
             
         # Control the Visualization of path   
         if self.visual_path == False:
