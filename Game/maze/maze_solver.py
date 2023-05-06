@@ -1,4 +1,5 @@
 import queue
+import random
 # W == left
 # E == Right
 # S == Down
@@ -61,13 +62,19 @@ class MazeSolverDFS:
         
         
     def _get_next_point(self, current_point, direction):
-        if direction == 'E':
+        directions = ['E', 'W', 'N', 'S']
+        random.shuffle(direction) # to make DFS fully random
+        
+        if direction == directions[0]:
             return (current_point[0], current_point[1] + 1)
-        elif direction == 'W':
+        
+        elif direction == directions[1]:
             return (current_point[0], current_point[1] - 1)
-        elif direction == 'N':
+        
+        elif direction == directions[2]:
             return (current_point[0] - 1, current_point[1])
-        elif direction == 'S':
+        
+        elif direction == directions[3]:
             return (current_point[0] + 1, current_point[1])
         else:
             print(f"Wrong direction Given {direction}")
