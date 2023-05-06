@@ -1,6 +1,8 @@
 import pygame
 import os
+import math
 
+from Helpers.Debug import debug
 
 
 class Player(pygame.sprite.Sprite):
@@ -69,6 +71,10 @@ class Player(pygame.sprite.Sprite):
         else:
             self.direction.x = 0
     
+        # if keys[pygame.K_SPACE]:
+        #     self.go_to_center()
+            
+    
     def move(self, speed):
         
         self.collision_with_kid()
@@ -87,9 +93,19 @@ class Player(pygame.sprite.Sprite):
             self.collision('vertical')
         
         self.rect.center = self.hit_box.center
+        
+    #get current block axis
+    def block_position(self):
+        position = (math.ceil(self.rect.y / 64), math.ceil(self.rect.x / 64))
+        return position
+
+    # move the agent to current block center
+    def go_to_center(self):
+        position = self.block_position()
+        self.hit_box.x = (position[0] * 64) - 50
+        self.hit_box.y = (position[1] * 64) - 50
     
-
-
+    
     def collision(self, direction):
 
         if direction == 'horizontal':

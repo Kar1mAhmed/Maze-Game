@@ -51,6 +51,8 @@ class Game:
                     if event.key == pygame.K_ESCAPE:
                         self.esc()
                         break
+                    if event.key == pygame.K_SPACE:
+                        self.level.draw_path()
             self.screen.fill('#2b2d42')
             self.level.run()
             

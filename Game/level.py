@@ -6,7 +6,7 @@ from Game.objects.player import Player
 from Game.objects.kid import Kid
 from Game.objects.bomb import Bomb
 
-from Game.maze.maze_solver import MazeSolverDFS_V2
+from Game.maze.maze_solver import MazeSolverDFS
 from Game.maze.maze_creator import maze
 
 import settings as s
@@ -22,10 +22,13 @@ class Level:
         
         my_maze = maze(rows=rows, cols=cols)
         my_maze.CreateMaze(pattern='h', loopPercent=10)
-        self.Map = my_maze.maze_map        
+        self.Map = my_maze.maze_map
+        
+        self.solver = MazeSolverDFS(self.Map)        
         
         # Sprit Group setup
         self.visible_sprites = YSortCameraGroup()
+        self.path_sprites = pygame.sprite.Group()
         self.obstacles_sprites = pygame.sprite.Group()
         self.kids = pygame.sprite.Group()
         
@@ -37,6 +40,7 @@ class Level:
         else:
             self.level_time = num_of_kids * 3 + rows + cols 
 
+        self.visual_path = False
         #sprite setup   
         self.create_map()
         
@@ -61,12 +65,20 @@ class Level:
     
         self.Bomb = Bomb((bomb_x, bomb_y), [self.visible_sprites])
         
+        self.kids_positions = []
+        
         for _ in range(self.num_of_kids):   
             SPAWN_START = 2
             BLOCK_SPAWN_POSITION = random.randint(5, 15)
             
-            kid_x = random.randint(SPAWN_START, self.cols - 1) * self.block_size + BLOCK_SPAWN_POSITION
-            kid_y = random.randint(SPAWN_START, self.rows - 1)* self.block_size + BLOCK_SPAWN_POSITION
+            
+            kid_block_x = random.randint(SPAWN_START, self.cols-1)
+            kid_block_y = random.randint(SPAWN_START, self.rows-1)
+            
+            self.kids_positions.append((kid_block_y + 1, kid_block_x + 1))
+
+            kid_x = kid_block_x * self.block_size + BLOCK_SPAWN_POSITION
+            kid_y = kid_block_y * self.block_size + BLOCK_SPAWN_POSITION
 
             Kid((kid_x , kid_y ), [self.visible_sprites, self.kids])
             
@@ -75,9 +87,35 @@ class Level:
     def run(self):
         self.visible_sprites.custom_draw(self.player)
         self.visible_sprites.update()
-
-
-
+    
+                
+    
+    def draw_path(self):
+        self.visible_sprites.remove(self.path_sprites)
+        self.path_sprites.empty()
+        
+        
+        
+        path = self.solver.get_path(self.kids_positions, self.player.block_position())
+        
+        start_transparency = 200
+        transparency_step = (start_transparency - 50) / len(path) 
+        
+        for step, block in enumerate(path):
+            current_transparency = start_transparency - step * transparency_step
+            
+            Tile((block[1] * self.block_size - 40, block[0] * self.block_size - 40),
+                    [self.path_sprites], 'path_20.png', current_transparency)
+            
+        # Control the Visualization of path   
+        if self.visual_path == False:
+            self.visible_sprites.add(self.path_sprites)
+            self.visual_path = True
+        else:
+            self.visible_sprites.remove(self.path_sprites)
+            self.visual_path = False
+            
+            
 class YSortCameraGroup(pygame.sprite.Group):
     def __init__(self) -> None:
         super().__init__()

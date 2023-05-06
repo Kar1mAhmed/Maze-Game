@@ -3,7 +3,7 @@ import random
 import os
 
 class Kid(pygame.sprite.Sprite):
-    def __init__(self,pos, groups, character_size=30):
+    def __init__(self, pos, groups, character_size=30):
         super().__init__(groups)
         
         # Getting random kid photo
