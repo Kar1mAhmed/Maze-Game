@@ -25,7 +25,7 @@ def options(screen_width, screen_height):
                             font=main.get_font(20), base_color="White", hovering_color="White")
 
         Maze_rows = Button(image=None, pos=(buttons_posX, buttons_posY[0]),
-                            text_input=f"Number of Maze Columns\t {settings.Number_of_rows}",
+                            text_input=f"Number of Maze Rows\t {settings.Number_of_rows}",
                             font=main.get_font(40), base_color="White", hovering_color="#7400b8")
         
         Maze_Cols = Button(image=None, pos=(buttons_posX, buttons_posY[1]),
