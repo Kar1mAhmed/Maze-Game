@@ -11,6 +11,7 @@ class Player(pygame.sprite.Sprite):
         
         self.obstacle_sprites = obstacle_sprites # Wall places 
         self.visible_sprites = visible_sprites
+
         self.kids = kids
         
         self.collected_kids = 0
@@ -133,8 +134,8 @@ class Player(pygame.sprite.Sprite):
                 kid.yay()
                 self.kids.remove(kid)
                 self.visible_sprites.remove(kid)
-                self.collected_kids+=1  
-                    
+                self.collected_kids+=1
+    
     def update(self):
         self.input()
         self.move(self.speed)

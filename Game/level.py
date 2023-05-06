@@ -45,6 +45,7 @@ class Level:
             self.level_time = num_of_kids * 3 + rows + cols 
 
         self.visual_path = False
+        self.kids_saved = 0
         #sprite setup   
         self.create_map()
         
@@ -85,16 +86,29 @@ class Level:
 
             Kid((kid_x , kid_y ), [self.visible_sprites, self.kids])
             
-        self.player = Player((self.block_size / 3, self.block_size / 3), [self.visible_sprites], self.obstacles_sprites, self.kids, self.visible_sprites)
+        self.player = Player((self.block_size / 3, self.block_size / 3), [self.visible_sprites],
+                                self.obstacles_sprites, self.kids, self.visible_sprites)
             
             
     def run(self):
         self.visible_sprites.custom_draw(self.player)
         self.visible_sprites.update()
+        
+        for kid_pos in self.kids_positions:
+            if kid_pos == self.player.block_position() and self.kids_saved != self.player.collected_kids:
+                self.kids_positions.remove(kid_pos)
+                self.kids_saved = self.player.collected_kids
+                
+                self.visible_sprites.remove(self.path_sprites)
+                self.visual_path = False
     
                 
     
     def draw_path(self):
+        
+        if len(self.kids_positions) < 1:
+            return
+        
         map_copy = copy.deepcopy(self.Map)
         self.solver.reset(map_copy)
         

@@ -21,7 +21,7 @@ screenYsize = SCREEN_HEIGHT
 fontSize = 50
 
 buttons_posX = screenXsize / 2
-y_start = screenYsize / 2 - 100
+y_start = screenYsize / 2 - 100 
 start_menu_buttons_posY = [y_start, y_start + 150, y_start + 300]
 
 SCREEN = pygame.display.set_mode((screenXsize, screenYsize))
