@@ -3,17 +3,18 @@ import sys
 from pygame import mixer
 
 from MenuScreens import OptionsFile
-from MenuScreens.StartGame import ChooseYourAlgo
 
 from Helpers.button import Button
 from Helpers.Debug import debug
 
+from Game.game_play import Game
 
 from settings import *
 
 pygame.init()
 
 ##### Global Variables #####
+game = Game()
 
 screenXsize =  SCREEN_WIDTH
 screenYsize = SCREEN_HEIGHT
@@ -70,7 +71,8 @@ def main_menu():
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if PLAY_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    ChooseYourAlgo(screenXsize, screenYsize)
+                    mixer.music.set_volume(0)
+                    game.run()
                 if OPTIONS_BUTTON.checkForInput(MENU_MOUSE_POS):
                     OptionsFile.options(screenXsize, screenYsize)
                 if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):

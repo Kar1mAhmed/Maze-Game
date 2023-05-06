@@ -8,8 +8,8 @@ import settings
 
 def options(screen_width, screen_height):
     buttons_posX = screen_width / 2
-    y_start = screen_height / 2 - 100
-    buttons_posY = [y_start - 300 ,y_start - 200, y_start - 100, y_start , y_start + 100 ,y_start + 300, y_start + 450]
+    y_start = screen_height / 2 
+    buttons_posY = [y_start - 300 ,y_start - 200, y_start - 100, y_start , y_start + 150 ,y_start + 300]
     
     Music_On = True
     Music_label = "Mute Music"
@@ -49,7 +49,7 @@ def options(screen_width, screen_height):
                               text_input="BACK", font=main.get_font(75), base_color="White",
                               hovering_color="#ff006e")
 
-        for button in [OPTIONS_BACK, SOUND_BUTTON_MUTE, Kids, Maze_rows, Maze_Cols, Time,]:
+        for button in [OPTIONS_BACK, SOUND_BUTTON_MUTE, Kids, Maze_rows, Maze_Cols, Time, info]:
             button.changeColor(OPTIONS_MOUSE_POS)
             button.update(main.SCREEN)
 
