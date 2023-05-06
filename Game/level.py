@@ -107,7 +107,7 @@ class Level:
     
                 
     
-    def draw_path(self, Algo='DFS'):
+    def draw_path(self, Algo='BFS'):
         
         if len(self.kids_positions) < 1:
             return
