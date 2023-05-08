@@ -20,7 +20,7 @@ https://youtu.be/hOv1X4Lt8CM
 # Game Images
 
 ### Game menu
-file![Screenshot 2023-05-08 180051](https://user-images.githubusercontent.com/72309324/236859607-24ceb763-7e74-4e62-bb9f-144cc84270ee.png)
+![Screenshot 2023-05-08 180051](https://user-images.githubusercontent.com/72309324/236859607-24ceb763-7e74-4e62-bb9f-144cc84270ee.png)
 
 ### Game Options
 1- Edit Maze size <br>
@@ -39,7 +39,6 @@ file![Screenshot 2023-05-08 180051](https://user-images.githubusercontent.com/72
 ##### Game Info
 1- in top there is timer that indicate how much time left for the bomb <br>
 2- in top there is count of how many kids saved from all kids <br>
-![Screenshot 2023-05-06 123634](https://user-images.githubusercontent.com/72309324/236860501-905d7144-9c25-4930-b6bf-6e98c36156ce.png)
 
 
 ### Algrothims
