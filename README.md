@@ -37,8 +37,9 @@ https://youtu.be/hOv1X4Lt8CM
 3- E to use DFS supre power <br>
 
 ##### Game Info
-1- in top there is timer that indicate how much time left for the bomb <br>
-2- in top there is count of how many kids saved from all kids <br>
+In Top : <br>
+1- timer that indicate how much time left for the bomb <br>
+2- count of how many kids saved from all kids <br>
 
 
 ### Algrothims
