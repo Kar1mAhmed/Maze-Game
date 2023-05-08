@@ -12,7 +12,7 @@ https://youtu.be/hOv1X4Lt8CM
 
 # How to Run
 1- download repo <br>
-2- make sure you installed pygame <br>
+2- make sure you installed pygame and pyautogui <br>
 3- run main 
 <br> <br>
 
