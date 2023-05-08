@@ -7,7 +7,7 @@ The game's overall difficulty level can be adjusted according to the player's pr
 
 Overall, this Maze game offers a challenging and entertaining experience for players, combining strategic thinking, reflexes, and algorithmic problem-solving.
 
-# Project Video on Arabic
+# Project Video (Arabic)
 https://youtu.be/hOv1X4Lt8CM
 
 # How to Run
