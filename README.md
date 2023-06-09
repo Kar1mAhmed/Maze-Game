@@ -46,7 +46,7 @@ In Top : <br>
 ##### 1-DFS : The path visualized when button E pressed, the algorthim return the path for first kid found in algorthim run
 ![Screenshot 2023-05-08 180120](https://user-images.githubusercontent.com/72309324/236861495-ceca0bb9-c260-41f7-89c5-e935e3d5f8b2.png)
 <br> <br> <br>
-##### 2-BFS : The path visualized when button Q pressed, the algorthim the Shortest path for nearest kid (shortest path)
+##### 2-BFS : The path visualized when button Q pressed, the algorthim return the path for nearest kid (shortest path)
 ![Screenshot 2023-05-08 180125](https://user-images.githubusercontent.com/72309324/236861697-f9d179f2-2a7b-464b-baa2-7a724d5ad8d0.png)
 
 
