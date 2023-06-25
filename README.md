@@ -1,5 +1,5 @@
 # Maze-Game
-In this Maze game, the player takes on the role of a hero who must navigate through a maze to rescue a trapped kid. Along with manually controlling the hero's movements, the game also offers an option to automatically solve the maze using different search algorithms.
+In this Maze game, the player takes on the role of a hero who must navigate through a maze to rescue a trapped kid, Along with manually controlling the hero's movements, the game also offers an option to automatically solve the maze using different search algorithms.
 
 The hero must face various obstacles and enemies to reach the kid and safely guide them out of the maze. The auto-solve option provides players with an added challenge of finding the most efficient solution to navigate through the maze using algorithms such as Breadth-First Search, Depth-First Search, A* Search And DeepQLearning.
 
